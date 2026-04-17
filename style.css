@@ -1,10 +1,11 @@
 table, tr, td, th {
-  border: solid white 2px; 
+  border: solid black 2px; 
   border-collapse: collapse
 }
 
 th{
-  text-align: left
+  text-align: left;
+  background-color: #aaaaaa; 
 }
 
 table {

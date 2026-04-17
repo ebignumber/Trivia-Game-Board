@@ -1,19 +1,24 @@
 let scores = [100, 200, 300, 400, 500, 600]
-let catagories = ["Five Nights at Freddy's", "The Simpsions did it again", "Spanish", "History", "Physics"]
+let catagories = ["Topic 1", "Topic 2", "Topic 3", "Topic 4", "Topic 5"]
 
 function changeColor(element){
-  if (!element.className){
+  if (element.className == "not-filled"){
     element.className = "filled"
   }
   else {
-    element.className = ''
+    element.className = 'not-filled'
   }
 }
 
 const boardDiv = document.getElementById("board")
-boardDiv.innerHTML += `<tr><th></th>${catagories.map(catagory => `<th>${catagory}</th>`).join('')}</tr>`
-for (let score of scores) {
-  boardDiv.innerHTML += `<tr><th>${score}</th><td></td><td></td><td></td><td></td><td></td><tr>`
+boardDiv.innerHTML += `<tr class="topics"><th></th>${catagories.map(catagory => `<th>${catagory}</th>`).join('')}</tr>`
+for (let score in scores) {
+  let tableRow = document.createElement("tr")
+  tableRow.innerHTML = `<th>${scores[score]}</th>`
+  for (let i in catagories){
+    tableRow.innerHTML += `<td class="not-filled" value="${Number(score * catagories.length) + Number(i)}"></td>`
+  }
+  boardDiv.appendChild(tableRow)
 }
 
 const boardGrid = document.getElementsByTagName("td")
