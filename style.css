@@ -1,0 +1,16 @@
+table, tr, td, th {
+  border: solid white 2px; 
+  border-collapse: collapse
+}
+
+th{
+  text-align: left
+}
+
+table {
+  width: 100%;
+}
+
+.filled {
+  background-color: red;
+}
