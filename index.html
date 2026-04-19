@@ -5,6 +5,15 @@
   </head>
   <body>
     <div>
+      <button id="edit-button" onclick="openTopicEditMenu()">Edit/Add Topics</button>
+      <dialog id="edit-topic-menu">
+        <h1>Please click on the button below to add topics</h1>
+        <div id="topics-div"></div>
+        <div class="button-div">
+          <button id="add-topic-button" onclick="addTopic()">Add Topic</button>
+          <button id="exit-button" onclick="exitMenu()">Exit</button>
+        </div>
+      </dialog>
       <table id="board">
       </table>
     </div>

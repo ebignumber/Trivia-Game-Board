@@ -15,3 +15,21 @@ table {
 .filled {
   background-color: red;
 }
+
+#edit-topic-menu {
+  height: 50vh;
+}
+
+.button-div {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+#topics-div {
+  height: 50%;
+  overflow: scroll;
+}
