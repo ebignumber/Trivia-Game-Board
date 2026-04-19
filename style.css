@@ -4,7 +4,7 @@ table, tr, td, th {
 }
 
 th{
-  text-align: left;
+  text-align: center;
   background-color: #aaaaaa; 
 }
 
@@ -32,4 +32,13 @@ table {
 #topics-div {
   height: 50%;
   overflow: scroll;
+}
+
+#import-menu {
+  text-align: center;
+}
+
+#json-to-import {
+  width: 95%;
+  margin-bottom: 9px;
 }

@@ -6,6 +6,10 @@
   <body>
     <div>
       <button id="edit-button" onclick="openTopicEditMenu()">Edit/Add Topics</button>
+      <button id="change-round" onclick="changeRound()">Change Round</button>
+      <button id="import-JSON" onclick="openImportMenu()">Import</button>
+      <button id="export-JSON" onclick="exportJSONFile()">Export</button>
+      <button id="reset-button" onclick="resetBoard()">Reset</button>
       <dialog id="edit-topic-menu">
         <h1>Please click on the button below to add topics</h1>
         <div id="topics-div"></div>
@@ -14,8 +18,15 @@
           <button id="exit-button" onclick="exitMenu()">Exit</button>
         </div>
       </dialog>
-      <table id="board">
-      </table>
+      <dialog id="import-menu">
+        <h1>Copy and paste a json file in the box below</h1>
+        <textarea id="json-to-import" onchange="jsonToParse = event.target.value"></textarea>
+        <div class="button-div">
+          <button onclick="cancelImport()">Cancel</button>
+          <button onclick="importJSONFile()">Import</button>
+        </div>
+      </dialog>
+      <table id="board"></table>
     </div>
     <script src="index.js"></script>
   </body>

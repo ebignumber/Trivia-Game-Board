@@ -1,9 +1,12 @@
-let scores = [100, 200, 300, 400, 500, 600]
+const roundOneScores = [100, 200, 300, 400, 500, 600]
+let scores = JSON.parse(localStorage.getItem("Scores")) || roundOneScores
 let catagories = JSON.parse(localStorage.getItem("Catagories")) || ["Topic 1", "Topic 2", "Topic 3", "Topic 4", "Topic 5"]
 let spacesFilled = JSON.parse(localStorage.getItem("Spaces Filled")) || []
 
 const editTopicMenu = document.getElementById("edit-topic-menu")
 const topicsDiv = document.getElementById("topics-div")
+const importMenu = document.getElementById("import-menu")
+let jsonToParse = ''
 
 function addTopic(){
   let topicHTML = document.createElement("div")
@@ -16,8 +19,8 @@ function openTopicEditMenu(){
 }
 
 function exitMenu(){
-  catagories = []
-  if (editTopicMenu.querySelector("input")){
+  if (editTopicMenu.querySelector("input")){ 
+    catagories = []
     editTopicMenu.querySelectorAll("input").forEach(element => catagories.push(element.value))
     localStorage.setItem("Catagories", JSON.stringify(catagories))
     spacesFilled = []
@@ -26,6 +29,60 @@ function exitMenu(){
   }
   editTopicMenu.removeAttribute("open")
   topicsDiv.innerHTML = ''
+}
+
+function openImportMenu(){
+  document.getElementById("json-to-import").value = ''
+  importMenu.setAttribute("open", true)
+}
+
+function cancelImport(){
+  importMenu.removeAttribute("open")
+}
+
+function changeRound(){
+  if(confirm("Is it time to change the round?")){
+    scores = scores.map(score => score + roundOneScores[scores.indexOf(score)])
+    localStorage.setItem("Scores", JSON.stringify(scores))
+    spacesFilled = []
+    localStorage.removeItem("Spaces Filled")
+    renderBoard()
+  }
+}
+
+//Original code for this function came from www.javaspring.net/blog/how-can-javascript-save-to-a-local-file/
+function exportJSONFile(){
+  let json = {catagories: catagories, scores: scores, spacesFilled, spacesFilled}
+  let jsonStr = JSON.stringify(json, null, 2);
+  const blob = new Blob([jsonStr], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = "Trivia Save Data.json";
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function importJSONFile(){
+  parsedJson = JSON.parse(jsonToParse)
+  catagories = parsedJson.catagories
+  scores = parsedJson.scores
+  spacesFilled = parsedJson.spacesFilled
+  localStorage.setItem("Catagories", JSON.stringify(catagories))
+  localStorage.setItem("Scores", JSON.stringify(scores))
+  localStorage.setItem("Spaces Filled", JSON.stringify(spacesFilled))
+  renderBoard()
+  importMenu.removeAttribute("open")
+}
+
+function resetBoard(){
+  if(confirm("Are you sure you want to reset the board?\nTHIS WILL REMOVE ALL DATA STORED FOR THIS BOARD!")){
+    scores = roundOneScores
+    catagories = ["Topic 1", "Topic 2", "Topic 3", "Topic 4", "Topic 5"]
+    spacesFilled = []
+    localStorage.clear()
+    renderBoard()
+  }
 }
 
 function clearSpace(element){
@@ -48,7 +105,7 @@ function renderBoard(){
     let tableRow = document.createElement("tr")
     tableRow.innerHTML = `<th>${scores[score]}</th>`
     for (let i in catagories){
-      tableRow.innerHTML += `<td class="not-filled" id="${score * catagories.length + i}"></td>`
+      tableRow.innerHTML += `<td class="not-filled" id="${score * catagories.length + Number(i)}"></td>`
     }
     boardDiv.appendChild(tableRow)
   }
@@ -62,5 +119,3 @@ function renderBoard(){
   }
 }
 renderBoard()
-
-document.getElementById("edit-button").addEventListener("click", openTopicEditMenu)
