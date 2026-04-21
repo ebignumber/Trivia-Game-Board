@@ -4,12 +4,14 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <div>
+    <div class="main-button-div">
       <button id="edit-button" onclick="openTopicEditMenu()">Edit/Add Topics</button>
       <button id="change-round" onclick="changeRound()">Change Round</button>
       <button id="import-JSON" onclick="openImportMenu()">Import</button>
       <button id="export-JSON" onclick="exportJSONFile()">Export</button>
       <button id="reset-button" onclick="resetBoard()">Reset</button>
+    </div>
+    <div>
       <dialog id="edit-topic-menu">
         <h1>Click on "Add Topic" to add the topics to the board</h1>
         <div id="topics-div"></div>

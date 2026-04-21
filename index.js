@@ -10,7 +10,7 @@ let jsonToParse = ''
 
 function addTopic(){
   let topicHTML = document.createElement("div")
-  topicHTML.innerHTML = `<div><input><button onclick="document.activeElement.parentElement.remove()">X</button></div>`
+  topicHTML.innerHTML = `<div class="topic"><input><button onclick="document.activeElement.parentElement.remove()">X</button></div>`
   topicsDiv.appendChild(topicHTML)
 }
 

@@ -31,6 +31,11 @@ table {
   height: 50vh;
 }
 
+button:hover {
+  background-color: var(--secondary-color);
+  color: var(--main-color)
+}
+
 .button-div {
   position: absolute;
   bottom: 0;
@@ -40,9 +45,28 @@ table {
   justify-content: space-around;
 }
 
+.main-button-div {
+  position:fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  justify-content:space-evenly;
+  border: 2px solid var(--secondary-color);
+}
+
 #topics-div {
-  height: 50%;
+  height: 60%;
   overflow: scroll;
+  text-align: center;
+}
+
+.topic > input, .topic > button {
+  font-size: 1.25em;
+}
+
+.topic > button {
+  background-color: red;
 }
 
 #import-menu {
