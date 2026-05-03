@@ -23,6 +23,10 @@ table {
   width: 100%;
 }
 
+.not-filled:hover {
+  background-color: #ff000050;
+}
+
 .filled {
   background-color: red;
 }
