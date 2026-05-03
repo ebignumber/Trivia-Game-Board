@@ -25,10 +25,12 @@ table {
 
 .not-filled:hover {
   background-color: #ff000050;
+  cursor: cell;
 }
 
 .filled {
   background-color: red;
+  cursor: cell;
 }
 
 #edit-topic-menu {
@@ -56,7 +58,8 @@ button:hover {
   display: flex;
   width: 100%;
   justify-content:space-evenly;
-  border: 2px solid var(--secondary-color);
+  padding: 10px;
+  border-top: 1px solid var(--secondary-color);
 }
 
 #topics-div {
