@@ -8,14 +8,17 @@ const topicsDiv = document.getElementById("topics-div")
 const importMenu = document.getElementById("import-menu")
 let jsonToParse = ''
 
-function addTopic(){
+function addTopic(catagoryName){
   let topicHTML = document.createElement("div")
-  topicHTML.innerHTML = `<div class="topic"><input><button onclick="document.activeElement.parentElement.remove()">X</button></div>`
+  topicHTML.innerHTML = `<div class="topic"><input value="${catagoryName ? catagoryName : ''}"><button onclick="document.activeElement.parentElement.remove()">X</button></div>`
   topicsDiv.appendChild(topicHTML)
 }
 
 function openTopicEditMenu(){
   editTopicMenu.setAttribute("open", true)
+  for (let catagory of catagories){
+    addTopic(catagory)
+  }
 }
 
 function exitMenu(){
