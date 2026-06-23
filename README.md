@@ -24,11 +24,10 @@
 [![Issues][issues-shield]][issues-url]
 
 
-<!-- PROJECT LOGO -->
 <br />
 <div align="center">
   <a href="https://github.com/ebignumber/Trivia-Game-Board">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="images/screenshot.png" alt="Screen Shot Of Project">
   </a>
 
   <h3 align="center">Trivia Game Board</h3>
@@ -117,9 +116,15 @@ All you need is a browser like Chrome, Edge, or Firefox. Nothing else is needed.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+When you first open the page, you will be greeted with a template board starting on round 1, topics 1-5, and none of the spaces filled. 
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+You can edit the templates by clicking on the "Add/Edit Topics" button. This will bring you to a menu in which you can delete, change, and add topics.
+
+Once you exit the menu, you should see the new topics on the board. You can then fill spaces by simply clicking on them. If you make a mistake and click on a space you didn't mean to, simply click on it again.
+
+After all the spaces are filled (or you just want to rush through the game), you can either click the "Reset" or "Change Round" Button. Clicking on Reset will prompt you to click another button to confirm the reset and you will see the board just as you did when you first opened the file. "Change Round" will increment the round by 1, multiplying the scores by the round number.
+
+What if you want to save the board for later use? Not to fear; this project takes advantage of localStorage to save your board so you can access it whenever you need to. If that's not good enough, you can also export and import the game data as json files.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
