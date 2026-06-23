@@ -104,7 +104,7 @@ function clearSpace(element){
 //Board initialization logic
 function renderBoard(){
   const boardDiv = document.getElementById("board")
-  boardDiv.innerHTML = `<tr class="topics"><th></th>${catagories.map(catagory => `<th>${catagory}</th>`).join('')}</tr>`
+  boardDiv.innerHTML = `<tr class="topics"><th>Round ${round}</th>${catagories.map(catagory => `<th>${catagory}</th>`).join('')}</tr>`
   for (let score in roundOneScores) {
     let tableRow = document.createElement("tr")
     tableRow.innerHTML = `<th>${roundOneScores[score] * round}</th>`
