@@ -105,7 +105,7 @@ All you need is a browser like Chrome, Edge, or Firefox. Nothing else is needed.
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/ebignumber/Trivia-Board-Game.git
    ```
 2. Start your file manager and open index.html
 
@@ -178,9 +178,9 @@ Distributed under the Unlicense License. See `LICENSE.txt` for more information.
 ## Acknowledgments
 I would like to give special thanks to the sites that I use often, and what made this project possible for me to make: 
 
-[Code for file exporting]: https://www.javaspring.net/blog/how-can-javascript-save-to-a-local-file/
-[W3schools]: https://www.w3schools.com/jsref/default.asp
-[FreeCodeCamp]: https://www.freecodecamp.org
+[Code for file exporting](https://www.javaspring.net/blog/how-can-javascript-save-to-a-local-file/)
+[W3schools](https://www.w3schools.com/jsref/default.asp)
+[FreeCodeCamp](https://www.freecodecamp.org)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
