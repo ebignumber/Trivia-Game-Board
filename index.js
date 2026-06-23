@@ -1,5 +1,5 @@
 const roundOneScores = [100, 200, 300, 400, 500, 600]
-let scores = JSON.parse(localStorage.getItem("Scores")) || roundOneScores
+let round = JSON.parse(localStorage.getItem("Round")) || 1
 let catagories = JSON.parse(localStorage.getItem("Catagories")) || ["Topic 1", "Topic 2", "Topic 3", "Topic 4", "Topic 5"]
 let spacesFilled = JSON.parse(localStorage.getItem("Spaces Filled")) || []
 
@@ -45,8 +45,9 @@ function cancelImport(){
 
 function changeRound(){
   if(confirm("Is it time to change the round?")){
-    scores = scores.map(score => score + roundOneScores[scores.indexOf(score)])
-    localStorage.setItem("Scores", JSON.stringify(scores))
+    round++
+    scores = roundOneScores.map(score => score * round)
+    localStorage.setItem("Round", JSON.stringify(round))
     spacesFilled = []
     localStorage.removeItem("Spaces Filled")
     renderBoard()
@@ -55,7 +56,7 @@ function changeRound(){
 
 //Original code for this function came from www.javaspring.net/blog/how-can-javascript-save-to-a-local-file/
 function exportJSONFile(){
-  let json = {catagories: catagories, scores: scores, spacesFilled, spacesFilled}
+  let json = {catagories: catagories, round: round, spacesFilled, spacesFilled}
   let jsonStr = JSON.stringify(json, null, 2);
   const blob = new Blob([jsonStr], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
@@ -69,10 +70,10 @@ function exportJSONFile(){
 function importJSONFile(){
   parsedJson = JSON.parse(jsonToParse)
   catagories = parsedJson.catagories
-  scores = parsedJson.scores
+  round = parsedJson.round
   spacesFilled = parsedJson.spacesFilled
   localStorage.setItem("Catagories", JSON.stringify(catagories))
-  localStorage.setItem("Scores", JSON.stringify(scores))
+  localStorage.setItem("Round", JSON.stringify(round))
   localStorage.setItem("Spaces Filled", JSON.stringify(spacesFilled))
   renderBoard()
   importMenu.removeAttribute("open")
@@ -80,9 +81,9 @@ function importJSONFile(){
 
 function resetBoard(){
   if(confirm("Are you sure you want to reset the board?\nTHIS WILL REMOVE ALL DATA STORED FOR THIS BOARD!")){
-    scores = roundOneScores
     catagories = ["Topic 1", "Topic 2", "Topic 3", "Topic 4", "Topic 5"]
     spacesFilled = []
+    round = 1
     localStorage.clear()
     renderBoard()
   }
@@ -104,9 +105,9 @@ function clearSpace(element){
 function renderBoard(){
   const boardDiv = document.getElementById("board")
   boardDiv.innerHTML = `<tr class="topics"><th></th>${catagories.map(catagory => `<th>${catagory}</th>`).join('')}</tr>`
-  for (let score in scores) {
+  for (let score in roundOneScores) {
     let tableRow = document.createElement("tr")
-    tableRow.innerHTML = `<th>${scores[score]}</th>`
+    tableRow.innerHTML = `<th>${roundOneScores[score] * round}</th>`
     for (let i in catagories){
       tableRow.innerHTML += `<td class="not-filled" id="${score * catagories.length + Number(i)}"></td>`
     }
